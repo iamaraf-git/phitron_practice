@@ -14,7 +14,7 @@ void sort(int arr[], int size)
     while(nxt!=total)
     {
         max=-1, ind=-1, ch=-1;
-        for(int i=27 ; i>0; i--)
+        for(int i=size-1 ; i>0; i--)
         {
             if(arr[i]>max)
             {
@@ -41,7 +41,7 @@ int main()
     gets(str);
 
     int size =27;
-    int arr[27];
+    int arr[size];
 
     for(int i=0 ; i<size; i++)
         arr[i] = 0;
