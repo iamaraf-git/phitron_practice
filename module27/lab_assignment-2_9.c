@@ -13,14 +13,10 @@ void check ( int *parr, int* n, int* ev_cnt, int* p_cnt, float* avg)
             {
                 flag =1;
             }
-
-
         }
-        if(flag==0 && *(parr+i)!=1)
+        if(flag==0 && *(parr+i)!=1 && *(parr+i)!=0)
         {
             *p_cnt +=1;
-
-
         }
 
         if(*(parr+i)%2==0)
@@ -51,7 +47,4 @@ int main()
 
     return 0;
 }
-
-
-
 
