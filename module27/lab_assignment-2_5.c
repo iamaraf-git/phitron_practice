@@ -1,40 +1,50 @@
-// Problem Statement
-// You are given a positive integer n .The second line will contain n positive integers.
-// Write a function that will take an integer array as an argument and return the sum in the following way.
-// >> If the index is odd and at the same time the value is odd then you can add the index and values
-// >> If the index is even and at the same time the value is even then you can add the index and values
-
-
-// Return the total sum from the function. If there is no such value which is mentioned in the above then return 0 from the function.
-// See the sample input ,output and explanation for more clarification.
-
-// Constraints-
-// 1<=n<=100
-// Values of array will be given between 1-1000
-
-
-
 #include<stdio.h>
+
+void check ( int *parr, int* n, int* ev_cnt, int* p_cnt, float* avg)
+{
+
+    float sum;
+
+    for(int i=0 ; i< *n ; i++)
+    {   int flag =0;
+        for(int j=2 ; j<= *(parr+i)/2; j++)
+        {
+            if(*(parr+i)% j ==0)
+            {
+                flag =1;
+            }
+        }
+        if(flag==0 && *(parr+i)!=1 && *(parr+i)!=0)
+        {
+            *p_cnt +=1;
+        }
+
+        if(*(parr+i)%2==0)
+        {
+            *ev_cnt +=1;
+            sum += *(parr+i);
+        }
+    }
+
+    *avg =(sum/ *ev_cnt );
+}
+
+
 
 int main()
 {
-    // printf("Hello world!");
-    int i, n,sum =0;
-    scanf("%d", &n);
+    int n, ev_cnt=0, p_cnt=0;
+    float avg=0;
+    scanf("%d",&n);
     int arr[n];
 
-    for( i=1; i<n+1 ; i++)
+    for(int i=0 ; i<n; i++)
         scanf("%d",&arr[i]);
 
-    for( i=1; i<n+1 ; i++)
-    {
-        if((i%2==0)&&(arr[i]%2==0))
-            sum += arr[i]+ i;
+    check (&arr,&n,&ev_cnt, &p_cnt, &avg);
 
-        else  if((i%2==1)&&(arr[i]%2==1))
-            sum += arr[i]+ i;
-    }
+    printf("Prime numbers: %d\nAverage of all even integers: %.2f", p_cnt, avg);
 
-    printf("%d",sum);
     return 0;
 }
+

@@ -1,10 +1,11 @@
 #include<stdio.h>
+#include<string.h>
 int main ()
 
 {
-    int i;
-//scanf("%d",&i);
-printf("hello ARAf");
-
-
+   char a [100];
+scanf("%s",a);
+printf("%s",a);
+printf("%s",strrev(a));
+return 0;
 }
